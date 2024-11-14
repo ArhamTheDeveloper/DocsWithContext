@@ -4,9 +4,30 @@ import { LuDownload } from "react-icons/lu";
 import { IoClose } from "react-icons/io5";
 import { motion } from "framer-motion";
 import useCard from "../contexts/CardContext";
+import { jsPDF } from "jspdf";
 
-function Card({ cardData, reference, toggleForm }) {
+function Card({ cardData, reference }) {
   const { deleteCard } = useCard();
+
+  const handleDownloadPDF = () => {
+    // Create a new PDF document
+    const doc = new jsPDF();
+
+    // Add the title as a large heading
+    doc.setFontSize(24);
+    doc.text(cardData.tagTitle, 20, 30);
+
+    // Add a horizontal line under the heading
+    doc.setLineWidth(0.5);
+    doc.line(20, 35, 190, 35);
+
+    // Add the description content below the heading
+    doc.setFontSize(12);
+    doc.text(cardData.description, 20, 50);
+
+    // Save the PDF with a filename
+    doc.save("document.pdf");
+  };
 
   return (
     <motion.div
@@ -30,13 +51,16 @@ function Card({ cardData, reference, toggleForm }) {
           >
             <IoClose />
           </button>
-          <button className="flex items-center justify-center rounded-full w-7 h-7 bg-zinc-600">
+          <button
+            onClick={handleDownloadPDF}
+            className="flex items-center justify-center rounded-full w-7 h-7 bg-zinc-600"
+          >
             <LuDownload size="0.7em" color="#fff" />
           </button>
         </div>
         {cardData.isTagOpen && (
           <div
-            className={`tag w-full py-2 flex items-center justify-center`}
+            className="w-full py-2 flex items-center justify-center"
             style={{ backgroundColor: cardData.tagColor }}
           >
             <h3 className="text-sm font-semibold">{cardData.tagTitle}</h3>

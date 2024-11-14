@@ -29,7 +29,7 @@ export default function DockForm({ closeForm }) {
       alert("Please enter a description!");
       return;
     }
-
+    
     // Add the new card with all the required fields
     addCard({
       description,
