@@ -26,7 +26,7 @@ function Card({ cardData, reference }) {
     doc.text(cardData.description, 20, 50);
 
     // Save the PDF with a filename
-    doc.save("document.pdf");
+    doc.save(`${Date.now()}.pdf`);
   };
 
   return (

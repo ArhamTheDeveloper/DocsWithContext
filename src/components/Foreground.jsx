@@ -7,7 +7,7 @@ function Foreground({ cards, toggleForm, isFormOpen }) {
   const ref = useRef(null);
 
   return (
-    <div ref={ref} className=" w-full h-full">
+    <div ref={ref} className="top-0 left-0 z-[3] w-full h-full">
       <FormBtn openForm={toggleForm} />
 
       {/* Background overlay when form is open */}
@@ -23,7 +23,7 @@ function Foreground({ cards, toggleForm, isFormOpen }) {
       )}
 
       {/* Responsive card display area */}
-      <div className="flex flex-wrap gap-6 justify-center p-5">
+      <div className="flex flex-wrap gap-6 items-center justify-center p-5">
         {cards.map((card) => (
           <Card key={card.id} cardData={card} reference={ref} />
         ))}
