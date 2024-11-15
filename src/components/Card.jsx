@@ -36,27 +36,29 @@ function Card({ cardData, reference }) {
       whileDrag={{ upscale: 1.1 }}
       dragElastic={0.1}
       dragTransition={{ bounceStiffness: 100, bounceDamping: 30 }}
-      className="flex-shrink-0 relative w-44 h-52 rounded-[45px] bg-zinc-900/90 text-white px-5 py-10 overflow-hidden"
+      className="flex-shrink-0 relative w-48 h-56 rounded-[45px] bg-zinc-900/90 text-white px-5 py-6 overflow-hidden"
     >
       <FaRegFileAlt />
-      <p className="mt-5 text-xs font-semibold leading-tight">
+      <p className="mt-5 text-sm font-semibold leading-tight">
         {cardData.description}
       </p>
       <div className="footer absolute bottom-0 left-0 w-full">
-        <div className="flex justify-around items-center px-5 py-1 mb-3">
-          <h5>{cardData.fileSize}</h5>
-          <button
-            onClick={() => deleteCard(cardData.id)}
-            className="flex items-center justify-center rounded-full w-7 h-7 bg-zinc-600"
-          >
-            <IoClose />
-          </button>
-          <button
-            onClick={handleDownloadPDF}
-            className="flex items-center justify-center rounded-full w-7 h-7 bg-zinc-600"
-          >
-            <LuDownload size="0.7em" color="#fff" />
-          </button>
+        <div className="flex justify-between items-center px-5 py-1 mb-3">
+          <h5 className="text-sm">{cardData.fileSize}</h5>
+          <div className="btns-container flex gap-2">
+            <button
+              onClick={() => deleteCard(cardData.id)}
+              className="flex items-center justify-center rounded-full w-6 h-6 bg-zinc-600"
+            >
+              <IoClose size="0.7em" />
+            </button>
+            <button
+              onClick={handleDownloadPDF}
+              className="flex items-center justify-center rounded-full w-6 h-6 bg-zinc-600"
+            >
+              <LuDownload size="0.7em" color="#fff" />
+            </button>
+          </div>
         </div>
         {cardData.isTagOpen && (
           <div

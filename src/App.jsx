@@ -34,7 +34,7 @@ function App() {
 
   return (
     <CardProvider value={{ addCard, deleteCard, cards, toggleForm }}>
-      <div className="relative w-full h-screen bg-zinc-800">
+      <div className="relative w-full min-h-screen bg-zinc-800">
         <Background />
         <Foreground
           cards={cards}

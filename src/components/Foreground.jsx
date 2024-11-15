@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Card from "./Card";
 import FormBtn from "./FormBtn";
 import DockForm from "./DockForm";
@@ -7,7 +7,7 @@ function Foreground({ cards, toggleForm, isFormOpen }) {
   const ref = useRef(null);
 
   return (
-    <div ref={ref} className="fixed top-0 left-0 z-[3] w-full h-full">
+    <div ref={ref} className=" w-full h-full">
       <FormBtn openForm={toggleForm} />
 
       {/* Background overlay when form is open */}
@@ -22,12 +22,10 @@ function Foreground({ cards, toggleForm, isFormOpen }) {
         </div>
       )}
 
-      {/* Card display area */}
-      <div className="flex flex-wrap gap-8 p-5">
+      {/* Responsive card display area */}
+      <div className="flex flex-wrap gap-6 justify-center p-5">
         {cards.map((card) => (
-          <div key={card.id}>
-            <Card cardData={card} reference={ref} />
-          </div>
+          <Card key={card.id} cardData={card} reference={ref} />
         ))}
       </div>
     </div>
